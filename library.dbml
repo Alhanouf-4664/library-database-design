@@ -1,0 +1,31 @@
+Table authors {
+  author_id integer [pk]
+  name varchar
+  biography text
+}
+
+
+Table books{
+  book_id integer [pk]
+  title varchar
+  publish_year int
+  category varchar
+  author_id integer [ref: >? authors.author_id]
+  indexes {title}
+  }
+
+
+Table members {
+  member_id integer [pk]
+  name varchar
+  contact varchar
+}
+
+
+Table borrows {
+  borrow_id integer [pk]
+  book_id integer [ref: >? books.book_id]
+  member_id integer  [ref: >? members.member_id]
+  borrow_date date
+  return_date date
+}
